@@ -82,7 +82,7 @@ namespace SearchAlgorithmsLib
         public Solution search(ISearchable<T> searchable)
         {
             //TOD
-            return 0;  
+            return null;  
         }
     }
 }
