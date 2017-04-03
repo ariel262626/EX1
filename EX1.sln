@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.23107.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EX1", "EX1\EX1.csproj", "{2CC1D848-2BA7-4E13-813B-CA3F3376E2A3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SearchAlgorithmsLib", "SearchAlgorithmsLib\SearchAlgorithmsLib.csproj", "{BF2311E7-54FF-490C-A888-222192A46C48}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{2CC1D848-2BA7-4E13-813B-CA3F3376E2A3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2CC1D848-2BA7-4E13-813B-CA3F3376E2A3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2CC1D848-2BA7-4E13-813B-CA3F3376E2A3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2CC1D848-2BA7-4E13-813B-CA3F3376E2A3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BF2311E7-54FF-490C-A888-222192A46C48}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BF2311E7-54FF-490C-A888-222192A46C48}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BF2311E7-54FF-490C-A888-222192A46C48}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BF2311E7-54FF-490C-A888-222192A46C48}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
