@@ -34,10 +34,10 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="MazeGeneratorLib">
-      <HintPath>..\..\..\..\..\Desktop\תכנות מתקדם 2\תרגיל 1\MazeGeneratorLib.dll</HintPath>
+      <HintPath>..\..\..\..\Desktop\‏‏תיקיה חדשה\MazeGeneratorLib.dll</HintPath>
     </Reference>
     <Reference Include="MazeLib">
-      <HintPath>..\..\..\..\..\Desktop\תכנות מתקדם 2\תרגיל 1\MazeLib.dll</HintPath>
+      <HintPath>..\..\..\..\Desktop\‏‏תיקיה חדשה\MazeLib.dll</HintPath>
     </Reference>
     <Reference Include="Priority Queue, Version=4.0.3.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\OptimizedPriorityQueue.4.0.3\lib\net45\Priority Queue.dll</HintPath>
