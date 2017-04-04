@@ -18,19 +18,21 @@ namespace SearchAlgorithmsLib
         private State<T> cameFrom;
         public State(T state) {
             this.state = state;
+            this.cameFrom = null;
         }
         public bool Equals(State<T> s) // we overload Object's Equals method
         {
             return state.Equals(s.state);
         }
         //get the cost - priority
-        public float getCost()
+        public float Cost
         {
-            return cost;
+            get; set;
         }
-        public void setCost(float newCost)
+
+        public State<T> CameFrom
         {
-            this.cost = newCost;
+            get; set;
         }
     }
 
@@ -42,7 +44,7 @@ namespace SearchAlgorithmsLib
 
     public interface ISearcher<T> {
         // the search method
-        Solution search(ISearchable<T> searchable);
+        Solution<T> search(ISearchable<T> searchable);
         // get how many nodes were evaluated by the algorithm
         int getNumberOfNodesEvaluated();
     }
@@ -79,7 +81,7 @@ namespace SearchAlgorithmsLib
 
         public void addToOpenList(State<T> s)
         {
-            openList.Enqueue(s, s.getCost());
+            openList.Enqueue(s, s.Cost);
         }
 
         public bool openContaines(State<T> other)
@@ -94,13 +96,20 @@ namespace SearchAlgorithmsLib
         public abstract Solution<T> search(ISearchable<T> searchable);
     }
 
-    public abstract class Solution<T>
+    public class Solution<T>
     {
-        List<State<T>> list;
-        public Solution(List<State<T>> otherList)
+       // private List<State<T>> list;
+        private List<State<T>> path;
+
+        public Solution(List<State<T>> path)
+        {
+            this.path = path;
+        }
+
+       /* public Solution(List<State<T>> otherList)
         {
             this.list = otherList;
-        }
+        }*/
     }
 
     public class Bfs<T> : Searcher<T>
@@ -111,34 +120,45 @@ namespace SearchAlgorithmsLib
             HashSet<State<T>> closed = new HashSet<State<T>>();
             while (OpenListSize > 0)
             {
-                State<T> n = popOpenList(); // inherited from Searcher, removes the best state
-                closed.Add(n);
-                if (n.Equals(searchable.getGoalState()))
-                    return backTrace(); // private method, back traces through the parents
+                State<T> currentState = popOpenList(); // inherited from Searcher, removes the best state
+                closed.Add(currentState);
+                if (currentState.Equals(searchable.getGoalState()))
+                    return backTrace(currentState); // private method, back traces through the parents
                                         // calling the delegated method, returns a list of states with n as a parent
-                List<State<T>> succerssors = searchable.getAllPossibleStates(n);
+                List<State<T>> succerssors = searchable.getAllPossibleStates(currentState);
                 foreach (State<T> s in succerssors)
                 {
                     if (!closed.Contains(s) && !openContaines(s))
                     {
                         // s.setCameFrom(n); // already done by getSuccessors
+                        s.Cost += 1; // update cost of neigbour before we put it in open list  
                         addToOpenList(s);
+                        // Check!! mabye we should check if each neigbour is the foal state
                     }
-                    else
+                    else if (!openContaines(s) && (s.Cost > (currentState.Cost + 1)))
                     {
-                    if (openContaines(s) && s.getCost< n.getCost + distance from the goal state)
-                            {
-                            // update it's cost  because we have new way
-                            
-                        }
+                        // update it's cost  because we have new way
+                        s.Cost = currentState.Cost + 1;
+                        s.CameFrom = currentState;
+                    }
                     }
                 }
             }
         }
-        public Solution<T> backTrace()
+        public Solution<T> backTrace<T>(State<T> state)
         {
-
+        List<State<T>> path = new List<State<T>>();
+        // add the goal state 
+        path.Add(state);
+        // add each father of the chain from the goal state to initial state
+        while (state.CameFrom != null)
+        {
+            path.Add(state.CameFrom);
+            state = state.CameFrom; 
         }
+        Solution <State<T>> sol = new Solution<State<T>>(path);
+
+
     }
 
     public class Dfs<T> : Searcher<T>
@@ -157,3 +177,13 @@ namespace SearchAlgorithmsLib
         }
 
 }
+
+private class Solution : Solution<State<object>>
+    {
+        private List<State<object>> path;
+
+        public Solution(List<State<object>> path)
+        {
+            this.path = path;
+        }
+    }
