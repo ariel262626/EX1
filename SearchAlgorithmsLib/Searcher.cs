@@ -1,5 +1,4 @@
-﻿using SearchAlgorithmsLib;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -7,60 +6,6 @@ using System.Threading.Tasks;
 
 namespace SearchAlgorithmsLib
 {
-    public class Class1
-    {
-    }
-
-    public class State<T>
-    {
-        private T state; // the state represented by a STRING 
-        private float cost; // cost to reach this state (set by a setter)
-        private State<T> cameFrom;
-        public State(T state) {
-            this.state = state;
-            this.cost = 0;
-            this.cameFrom = null;
-        }
-        public override bool Equals(object obj)
-        {
-            bool a = state.Equals((obj as State<T>).state);
-            return state.Equals((obj as State<T>).state);
-        }
-        //get the cost - priority
-        public float Cost
-        {
-            get; set;
-        }
-
-        public State<T> CameFrom
-        {
-            get; set;
-        }
-
-        public T getState()
-        {
-            return state;
-        }
-
-        public override int GetHashCode()
-        {
-            return state.ToString().GetHashCode();
-        }
-    }
-
-    public interface ISearchable<T> {
-        State<T> getInitialState();
-        State<T> getGoalState();
-        List<State<T>> getAllPossibleStates(State<T> s);
-    }
-
-    public interface ISearcher<T> {
-        // the search method
-        Solution<T> search(ISearchable<T> searchable);
-        // get how many nodes were evaluated by the algorithm
-        int getNumberOfNodesEvaluated();
-    }
-
     public abstract class Searcher<T> : ISearcher<T>
     {
         private Priority_Queue.SimplePriorityQueue<State<T>> openList;
@@ -132,19 +77,5 @@ namespace SearchAlgorithmsLib
         }
 
         public abstract Solution<T> search(ISearchable<T> searchable);
-    }
-
-    public class Solution<T>
-    {
-        private List<State<T>> path;
-
-        public Solution(List<State<T>> path)
-        {
-            this.path = path;
-        }
-        public List<State<T>> getList()
-        {
-            return path;
-        }
     }
 }

@@ -20,14 +20,9 @@ namespace SearchAlgorithmsLib
                 increaseEvaluatedNodes();
 
                 if (state.Equals(searchable.getGoalState()))
-                {
-                    int x = 7;
                     return backTrace(state);
-                }
                 if (!visitedStates.Contains(state))
-                {
                     visitedStates.Add(state);
-                }
                 List<State<T>> succerssors = searchable.getAllPossibleStates(state);
                 //for every neighbor add hin to the stack
                 foreach (State<T> neig in succerssors)
