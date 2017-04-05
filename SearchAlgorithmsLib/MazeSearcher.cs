@@ -3,15 +3,15 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
+using MazeLib;
 namespace SearchAlgorithmsLib
 {
     /* Adapter class for the Maze */
-    class MazeSearcher<T>: ISearchable<T>
+    class MazeSearcher: ISearchable<Position>
     {
         private MazeLib.Maze myMaze;
         private MazeLib.CellType cell = new MazeLib.CellType();
-        private State<T> myStart, myGoal; 
+        private State<Position> myStart, myGoal; 
         public MazeSearcher (MazeLib.Maze maze)
         {
             myMaze = maze;
@@ -21,17 +21,17 @@ namespace SearchAlgorithmsLib
             State<MazeLib.Position> goal = new State<MazeLib.Position>(myMaze.GoalPos);
         } 
 
-        public State<T> getInitialState()
+        public State<Position> getInitialState()
         {
             return myStart;
         }
 
-        public State<T> getGoalState()
+        public State<Position> getGoalState()
         {
             return myGoal;
         }
 
-        public List<State<MazeLib.Position>> getAllPossibleStates(State<MazeLib.Position> s)
+        public List<State<Position>> getAllPossibleStates(State<Position> s)
         {
             List<State<MazeLib.Position>> myNeigbours = new List<State<MazeLib.Position>>();
             // check his all relevant niegbours
@@ -54,16 +54,16 @@ namespace SearchAlgorithmsLib
             // down
             if ((s.getState().Row + 1 < myMaze.Rows) && (myMaze[s.getState().Row + 1, s.getState().Col] == 0))
             {
-                MazeLib.Position downPosition = new MazeLib.Position(s.getState().Row + 1, s.getState().Col);
-                State<MazeLib.Position> down = new State<MazeLib.Position>(downPosition);
+                Position downPosition = new Position(s.getState().Row + 1, s.getState().Col);
+                State<Position> down = new State<Position>(downPosition);
                 down.CameFrom = s;
                 myNeigbours.Add(down);
             }
             //left
             if ((s.getState().Col - 1 >= 0) && (myMaze[s.getState().Row, s.getState().Col - 1] == 0))
             {
-                MazeLib.Position leftPosition = new MazeLib.Position(s.getState().Row, s.getState().Col - 1);
-                State<MazeLib.Position> left = new State<MazeLib.Position>(leftPosition);
+                Position leftPosition = new Position(s.getState().Row, s.getState().Col - 1);
+                State<Position> left = new State<Position>(leftPosition);
                 left.CameFrom = s;
                 myNeigbours.Add(left);
             }

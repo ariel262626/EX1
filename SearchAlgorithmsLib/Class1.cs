@@ -104,21 +104,7 @@ namespace SearchAlgorithmsLib
             }
             return false;
         }
-        public abstract Solution<T> search(ISearchable<T> searchable);
-    }
 
-    public class Solution<T>
-    {
-        private List<State<T>> path;
-
-        public Solution(List<State<T>> path)
-        {
-            this.path = path;
-        }
-    }
-
-    public class Bfs<T> : Searcher<T>
-    {
         public Solution<T> backTrace<T>(State<T> state)
         {
             List<State<T>> path = new List<State<T>>();
@@ -134,6 +120,21 @@ namespace SearchAlgorithmsLib
             return sol;
         }
 
+        public abstract Solution<T> search(ISearchable<T> searchable);
+    }
+
+    public class Solution<T>
+    {
+        private List<State<T>> path;
+
+        public Solution(List<State<T>> path)
+        {
+            this.path = path;
+        }
+    }
+
+    public class Bfs<T> : Searcher<T>
+    {
         public override Solution<T> search(ISearchable<T> searchable)
         {
             addToOpenList(searchable.getInitialState()); // inherited from Searcher
@@ -171,20 +172,4 @@ namespace SearchAlgorithmsLib
             return backTrace(searchable.getGoalState());
         }
     }
-
-    public class Dfs<T> : Searcher<T>
-    { 
-        public override Solution<T> search(ISearchable<T> searchable)
-        {/*
-            Stack<State<T>> stack = new Stack<State<T>>();
-            stack.Push(searchable.getInitialState());
-            while (stack.Count != 0)
-            {
-            State<T> state = stack.Pop();
-            if v is not labeled as discovered:
-            label v as discovered
-            for all edges from v to w in G.adjacentEdges(v) do
-           stack.Push(w)*/
-        }
-
 }
