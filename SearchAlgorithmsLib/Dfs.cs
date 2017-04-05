@@ -15,9 +15,15 @@ namespace SearchAlgorithmsLib
             stack.Push(searchable.getInitialState());
             while (stack.Count != 0)
             {
+
                 State<T> state = stack.Pop();
+                increaseEvaluatedNodes();
+
                 if (state.Equals(searchable.getGoalState()))
+                {
+                    int x = 7;
                     return backTrace(state);
+                }
                 if (!visitedStates.Contains(state))
                 {
                     visitedStates.Add(state);
@@ -25,7 +31,10 @@ namespace SearchAlgorithmsLib
                 List<State<T>> succerssors = searchable.getAllPossibleStates(state);
                 //for every neighbor add hin to the stack
                 foreach (State<T> neig in succerssors)
-                    stack.Push(neig);
+                {      
+                    if (!visitedStates.Contains(neig))
+                        stack.Push(neig);
+                }
             }
             // if we had wrong in the input, we will arrive here
             return backTrace(searchable.getGoalState());

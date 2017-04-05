@@ -21,9 +21,10 @@ namespace SearchAlgorithmsLib
             this.cost = 0;
             this.cameFrom = null;
         }
-        public bool Equals(State<T> s) // we overload Object's Equals method
+        public override bool Equals(object obj)
         {
-            return state.Equals(s.state);
+            bool a = state.Equals((obj as State<T>).state);
+            return state.Equals((obj as State<T>).state);
         }
         //get the cost - priority
         public float Cost
@@ -39,6 +40,11 @@ namespace SearchAlgorithmsLib
         public T getState()
         {
             return state;
+        }
+
+        public override int GetHashCode()
+        {
+            return state.ToString().GetHashCode();
         }
     }
 
@@ -83,6 +89,11 @@ namespace SearchAlgorithmsLib
         public int getNumberOfNodesEvaluated()
         {
             return evaluatedNodes;
+        }
+
+        public void increaseEvaluatedNodes()
+        {
+            evaluatedNodes++;
         }
 
         public void addToOpenList(State<T> s)
