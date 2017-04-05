@@ -7,18 +7,17 @@ using MazeLib;
 namespace SearchAlgorithmsLib
 {
     /* Adapter class for the Maze */
-    class MazeSearcher: ISearchable<Position>
+    public class MazeSearcher: ISearchable<Position>
     {
-        private MazeLib.Maze myMaze;
-        private MazeLib.CellType cell = new MazeLib.CellType();
+        private Maze myMaze;
         private State<Position> myStart, myGoal; 
-        public MazeSearcher (MazeLib.Maze maze)
+        public MazeSearcher (Maze maze)
         {
             myMaze = maze;
            // create start state
-            State<MazeLib.Position> start = new State<MazeLib.Position>(myMaze.InitialPos);
+            myStart = new State<Position>(myMaze.InitialPos);
             // create goal state
-            State<MazeLib.Position> goal = new State<MazeLib.Position>(myMaze.GoalPos);
+            myGoal = new State<Position>(myMaze.GoalPos);
         } 
 
         public State<Position> getInitialState()
