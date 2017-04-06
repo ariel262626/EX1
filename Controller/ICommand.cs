@@ -4,12 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Model
+namespace Controller
 {
-    class Program
+    interface ICommand
     {
-        static void Main(string[] args)
-        {
-        }
+        string Execute(string[] args, TcpClient client = null);
     }
 }

@@ -6,10 +6,7 @@ using System.Threading.Tasks;
 
 namespace Model
 {
-    class Program
+    interface IModel
     {
-        static void Main(string[] args)
-        {
-        }
     }
 }

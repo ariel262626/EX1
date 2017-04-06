@@ -1,15 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Sockets;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Model
+namespace Controller
 {
-    class Program
+    interface IClientHandler
     {
-        static void Main(string[] args)
-        {
-        }
+        void HandleClient(TcpClient client);
     }
 }

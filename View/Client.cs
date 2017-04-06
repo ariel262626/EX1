@@ -4,12 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Model
+namespace View
 {
-    class Program
+    class Client
     {
-        static void Main(string[] args)
-        {
-        }
     }
 }
