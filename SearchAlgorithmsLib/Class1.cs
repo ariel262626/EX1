@@ -16,7 +16,8 @@ namespace SearchAlgorithmsLib
         private T state; // the state represented by a STRING 
         private float cost; // cost to reach this state (set by a setter)
         private State<T> cameFrom;
-        public State(T state) {
+        public State(T state)
+        {
             this.state = state;
             this.cameFrom = null;
         }
@@ -36,13 +37,15 @@ namespace SearchAlgorithmsLib
         }
     }
 
-    public interface ISearchable<T> {
+    public interface ISearchable<T>
+    {
         State<T> getInitialState();
         State<T> getGoalState();
         List<State<T>> getAllPossibleStates(State<T> s);
     }
 
-    public interface ISearcher<T> {
+    public interface ISearcher<T>
+    {
         // the search method
         Solution<T> search(ISearchable<T> searchable);
         // get how many nodes were evaluated by the algorithm
@@ -98,7 +101,7 @@ namespace SearchAlgorithmsLib
 
     public class Solution<T>
     {
-       // private List<State<T>> list;
+        // private List<State<T>> list;
         private List<State<T>> path;
 
         public Solution(List<State<T>> path)
@@ -106,10 +109,10 @@ namespace SearchAlgorithmsLib
             this.path = path;
         }
 
-       /* public Solution(List<State<T>> otherList)
-        {
-            this.list = otherList;
-        }*/
+        /* public Solution(List<State<T>> otherList)
+         {
+             this.list = otherList;
+         }*/
     }
 
     public class Bfs<T> : Searcher<T>
@@ -124,7 +127,7 @@ namespace SearchAlgorithmsLib
                 closed.Add(currentState);
                 if (currentState.Equals(searchable.getGoalState()))
                     return backTrace(currentState); // private method, back traces through the parents
-                                        // calling the delegated method, returns a list of states with n as a parent
+                                                    // calling the delegated method, returns a list of states with n as a parent
                 List<State<T>> succerssors = searchable.getAllPossibleStates(currentState);
                 foreach (State<T> s in succerssors)
                 {
@@ -141,49 +144,24 @@ namespace SearchAlgorithmsLib
                         s.Cost = currentState.Cost + 1;
                         s.CameFrom = currentState;
                     }
-                    }
                 }
             }
+            return null;
         }
-        public Solution<T> backTrace<T>(State<T> state)
-        {
-        List<State<T>> path = new List<State<T>>();
-        // add the goal state 
-        path.Add(state);
-        // add each father of the chain from the goal state to initial state
-        while (state.CameFrom != null)
-        {
-            path.Add(state.CameFrom);
-            state = state.CameFrom; 
-        }
-        Solution <State<T>> sol = new Solution<State<T>>(path);
 
-
-    }
-
-    public class Dfs<T> : Searcher<T>
-    { 
-        public override Solution<T> search(ISearchable<T> searchable)
+        public Solution<T> backTrace(State<T> state)
         {
-            Stack<State<T>> stack = new Stack<State<T>>();
-            stack.Push(searchable.getInitialState());
-            while (stack.Count != 0)
+            List<State<T>> path = new List<State<T>>();
+            // add the goal state 
+            path.Add(state);
+            // add each father of the chain from the goal state to initial state
+            while (state.CameFrom != null)
             {
-            State<T> state = stack.Pop();
-            if v is not labeled as discovered:
-            label v as discovered
-            for all edges from v to w in G.adjacentEdges(v) do
-           stack.Push(w)
-        }
-
-}
-
-private class Solution : Solution<State<object>>
-    {
-        private List<State<object>> path;
-
-        public Solution(List<State<object>> path)
-        {
-            this.path = path;
+                path.Add(state.CameFrom);
+                state = state.CameFrom;
+            }
+            Solution<T> sol = new Solution<T>(path);
+            return sol;
         }
     }
+}
