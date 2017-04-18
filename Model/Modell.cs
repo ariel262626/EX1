@@ -3,10 +3,13 @@ using MazeLib;
 using SearchAlgorithmsLib;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
+using System.Net.Sockets;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
+using View;
 
 namespace Model
 {
@@ -14,13 +17,13 @@ namespace Model
     {
         private Dictionary<string, Maze> poolMaze;
         private Dictionary<string, Solution<Position>> solutionCache;
-        private Dictionary<string, Maze> poolGameToJoin;
-        private bool partnerReady = false; 
+        private Dictionary<string, MultiPlayerGame> poolGameToJoin;
+        private bool partnerReady = false;
         public Modell()
         {
             poolMaze = new Dictionary<string, Maze>();
             solutionCache = new Dictionary<string, Solution<Position>>();
-            poolGameToJoin = new Dictionary<string, Maze>();
+            poolGameToJoin = new Dictionary<string, MultiPlayerGame>();
         }
         public Maze generateMaze(string name, int rows, int cols)
         {
@@ -88,23 +91,22 @@ namespace Model
 
 
 
-        public void startGame(string name, int rows, int cols)
+        public string startGame(TcpClient host, string name, int rows, int cols)
         {
+            Maze maze;
             // check if we have exist maze, if not -create new one
             if (poolMaze.ContainsKey(name))
             {
-                Maze maze = poolMaze[name];
+                maze = poolMaze[name];
             }
             else
             {
-                Maze maze = generateMaze(name, rows, cols);
-                poolGameToJoin.Add(maze.Name, maze);
+                maze = generateMaze(name, rows, cols);
             }
-
-            while (!partnerReady)
-            {
-                Thread.Sleep(100);
-            }
+            MultiPlayerGame multiGame = new MultiPlayerGame(host, maze);
+            poolGameToJoin.Add(maze.Name, multiGame);
+            multiGame.waitForGuest();
+            return maze.ToJSON();
         }
 
         public List<string> listGame()
@@ -113,17 +115,35 @@ namespace Model
             return gameList;
         }
 
-        public string joinToGame(string name)
+        public string joinToGame(TcpClient guest, string name)
         {
             if (poolGameToJoin.ContainsKey(name))
             {
-                partnerReady = true;
-                return poolGameToJoin[name].ToJSON();
+                MultiPlayerGame multiGame = poolGameToJoin[name];
+                multiGame.setGuest(guest);
+                return poolGameToJoin[name].getMaze().ToJSON();
             }
             // else
             Console.WriteLine("there is no free player to play");
             return null;
-            
+
+        }
+
+        public MultiPlayerGame playGame(TcpClient client)
+        {
+            foreach (KeyValuePair<string, MultiPlayerGame> tuple in poolGameToJoin)
+            {
+                if (tuple.Value.getHost() == client)
+                {
+                    return tuple.Value;
+                }
+                if (tuple.Value.getGuest() == client)
+                {
+                    return tuple.Value;
+                }
+            }
+            Console.WriteLine("MultiPlayerGame not found 404");
+            return null;
         }
     }
 }

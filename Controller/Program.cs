@@ -12,7 +12,7 @@ namespace Controller
         static void Main(string[] args)
         {
             IClientHandler ch = new ClientHandler();
-            Server server = new Server(5555, ch);
+            Server server = new Server(5556, ch);
             server.Start();
             Console.ReadKey();
         }

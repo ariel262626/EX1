@@ -1,6 +1,7 @@
 ﻿using Model;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Net.Sockets;
 using System.Text;
@@ -18,7 +19,9 @@ namespace Controller
 
         public string Execute(string[] args, TcpClient client)
         {
-            model.
+            string name = args[0];
+            string messageToClient = model.joinToGame(client, name);
+            return messageToClient;
         }
     }
 }

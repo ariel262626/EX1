@@ -55,6 +55,7 @@
   <ItemGroup>
     <Compile Include="IModel.cs" />
     <Compile Include="Modell.cs" />
+    <Compile Include="MultiPlayerGame.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

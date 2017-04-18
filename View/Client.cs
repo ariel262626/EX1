@@ -14,7 +14,7 @@ namespace View
     public Client(){ }
         public void startGame()
         {
-            IPEndPoint ep = new IPEndPoint(IPAddress.Parse("127.0.0.1"), 5555);
+            IPEndPoint ep = new IPEndPoint(IPAddress.Parse("127.0.0.1"), 5556);
             TcpClient client = new TcpClient();
             try {
                 client.Connect(ep);
@@ -23,9 +23,9 @@ namespace View
                 Console.Write("Error in socket");
             }
             Console.WriteLine("You are connected");
-            using (NetworkStream stream = client.GetStream())
-            using (StreamReader reader = new StreamReader(stream))
-            using (StreamWriter writer = new StreamWriter(stream))
+            NetworkStream stream = client.GetStream();
+            StreamReader reader = new StreamReader(stream);
+            StreamWriter writer = new StreamWriter(stream);
             {
                 while (true) {
                     // Send data to server
@@ -38,8 +38,11 @@ namespace View
                     writer.WriteLine(mission);
                     writer.Flush();
                     // Get result from server
-                    string result = reader.ReadLine();
-                    Console.Write("{0}", result);
+                    while (reader.Peek() > 0)
+                    {
+                        string result = reader.ReadLine();
+                        Console.WriteLine("{0}", result);
+                    }
                 }
             }
             client.Close();

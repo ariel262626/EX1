@@ -21,7 +21,7 @@ namespace Controller
             {
                 using (NetworkStream stream = client.GetStream())
                 using (StreamReader reader = new StreamReader(stream))
-                using (StreamWriter writer = new StreamWriter(stream))
+                using (StreamWriter writer = new StreamWriter(stream))                 
                 {
                     while (true)
                     {
