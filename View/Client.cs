@@ -38,11 +38,18 @@ namespace View
                     writer.WriteLine(mission);
                     writer.Flush();
                     // Get result from server
-                    while (reader.Peek() > 0)
+                   // string result = reader.ReadLine();
+                    while (true)
                     {
                         string result = reader.ReadLine();
                         Console.WriteLine("{0}", result);
+                        if (reader.Peek() == '@')
+                        {
+                            result.TrimEnd('\n');
+                            break;
+                        }
                     }
+                   // reader.ReadLine();
                 }
             }
             client.Close();

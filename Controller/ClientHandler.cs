@@ -33,6 +33,8 @@ namespace Controller
                         }
                         // PacketStream packet = Newtonsoft.Json.JsonConvert.DeserializeObject<PacketStream> 
                         string result = controller.ExecuteCommand(commandLine, client);
+                        result += '\n';
+                        result += '@';
                         writer.Write(result);
                         writer.Flush();
                     }

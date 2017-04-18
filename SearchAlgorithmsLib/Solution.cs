@@ -8,16 +8,22 @@ namespace SearchAlgorithmsLib
 {
     public class Solution<T>
     {
-        private List<State<T>> path;
+        private List<State<T>> myPath;
         private int evaluatedNodes = 0;
 
         public Solution(List<State<T>> path)
         {
-            this.path = path;
+            myPath = new List<State<T>>();
+           for (int i = path.Count - 1; i >= 0; i--)
+            {
+                myPath.Add(path[i]);
+            }
+           // this.myPath = path;
+
         }
         public List<State<T>> getList()
         {
-            return path;
+            return myPath;
         }
         public void setEvaluatedNodes(int evaluatedNodesFromAlgo)
         {

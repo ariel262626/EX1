@@ -22,8 +22,7 @@ namespace Controller
             int rows = int.Parse(args[1]);
             int cols = int.Parse(args[2]);
             Maze maze = model.generateMaze(name, rows, cols);
-            maze.Name = name; // update name of the maze
-            return maze.ToJSON().ToString();
+            return maze.ToJSON();
         }
     }
 }
