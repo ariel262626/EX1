@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using MazeLib;
 using MazeGeneratorLib;
 using SearchAlgorithmsLib;
+using View;
 
 namespace ObjectAdapter
 {
@@ -17,7 +18,7 @@ namespace ObjectAdapter
             program.compareSolvers();
         }
         public void compareSolvers()
-        {
+        {/*
             DFSMazeGenerator mazeCreator = new DFSMazeGenerator();
             Maze maze = mazeCreator.Generate(25, 25);
             MazeSearcher mazeSearchable = new MazeSearcher(maze);
@@ -51,6 +52,8 @@ namespace ObjectAdapter
                 Console.Write("({0},{1}) ", x, y);
             }
             Console.ReadKey();
+        */
+            
         }
     }
 }

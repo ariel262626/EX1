@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Model;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net.Sockets;
@@ -13,9 +14,16 @@ namespace Controller
         private IModel model;
         public Controller()
         {
-            model = new Model();
+            this.model = new Modell();
+
             commands = new Dictionary<string, ICommand>();
             commands.Add("generate", new GenerateMazeCommand(model));
+            commands.Add("solve", new SolveCommand(model));
+            commands.Add("start", new StartCommand(model));
+            commands.Add("list", new ListCommand(model));
+            commands.Add("join", new SolveCommand(model));
+            commands.Add("play", new SolveCommand(model));
+            commands.Add("close", new SolveCommand(model));
             // more commands...
         }
         public string ExecuteCommand(string commandLine, TcpClient client)

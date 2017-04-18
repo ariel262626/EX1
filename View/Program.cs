@@ -10,6 +10,8 @@ namespace View
     {
         static void Main(string[] args)
         {
+            Client client = new Client();
+            client.startGame();
         }
     }
 }

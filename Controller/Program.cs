@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using View;
 
 namespace Controller
 {
@@ -10,6 +11,10 @@ namespace Controller
     {
         static void Main(string[] args)
         {
+            IClientHandler ch = new ClientHandler();
+            Server server = new Server(5555, ch);
+            server.Start();
+            Console.ReadKey();
         }
     }
 }

@@ -27,7 +27,7 @@ namespace Controller
                 listener.Start();
                 Console.WriteLine("Waiting for connections...");
 
-            Task task = new Task(() => {
+                Task task = new Task(() => {
                 while (true)
                 {
                     try

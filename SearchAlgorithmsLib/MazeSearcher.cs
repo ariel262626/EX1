@@ -7,18 +7,20 @@ using MazeLib;
 namespace SearchAlgorithmsLib
 {
     /* Adapter class for the Maze */
-    public class MazeSearcher: ISearchable<Position>
+    public class MazeSearcher : ISearchable<Position>
     {
         private Maze myMaze;
-        private State<Position> myStart, myGoal; 
-        public MazeSearcher (Maze maze)
+        private State<Position> myStart, myGoal;
+        HashSet<State<Position>> poolState;
+        public MazeSearcher(Maze maze)
         {
             myMaze = maze;
-           // create start state
+            // create start state
             myStart = new State<Position>(myMaze.InitialPos);
             // create goal state
             myGoal = new State<Position>(myMaze.GoalPos);
-        } 
+            poolState = new HashSet<State<Position>>();
+        }
 
         public State<Position> getInitialState()
         {
@@ -35,7 +37,7 @@ namespace SearchAlgorithmsLib
             List<State<MazeLib.Position>> myNeigbours = new List<State<MazeLib.Position>>();
             // check his all relevant niegbours
             // up
-            if ((s.getState().Row - 1 >= 0) && (myMaze[s.getState().Row - 1 , s.getState().Col] == 0))
+            if ((s.getState().Row - 1 >= 0) && (myMaze[s.getState().Row - 1, s.getState().Col] == 0))
             {
                 MazeLib.Position upPosition = new MazeLib.Position(s.getState().Row - 1, s.getState().Col);
                 State<MazeLib.Position> up = new State<MazeLib.Position>(upPosition);
@@ -68,5 +70,11 @@ namespace SearchAlgorithmsLib
             }
             return myNeigbours;
         }
+
+     /* public  State<Position> getStateFromPool(Position p)
+        {
+            if (poolState.Contains(p))
+            poolState.Add(new State<Position>(p));
+        }*/
     }
 }
