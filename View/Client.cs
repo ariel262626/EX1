@@ -20,7 +20,7 @@ namespace View
                 client.Connect(ep);
             } catch (SocketException e)
             {
-                Console.Write("Error in socket");
+                Console.WriteLine("Error in socket");
             }
             Console.WriteLine("You are connected");
             NetworkStream stream = client.GetStream();
@@ -49,7 +49,6 @@ namespace View
                             break;
                         }
                     }
-                   // reader.ReadLine();
                 }
             }
             client.Close();

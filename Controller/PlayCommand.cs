@@ -21,7 +21,7 @@ namespace Controller
         {
             string move = args[0];
             MultiPlayerGame multiPlayerGame = model.playGame(client);
-            NetworkStream stream = client.GetStream();
+            NetworkStream stream = multiPlayerGame.getOtherClient(client).GetStream();
             StreamReader reader = new StreamReader(stream);
             StreamWriter writer = new StreamWriter(stream);
             writer.WriteLine(ToJson(multiPlayerGame, move));

@@ -18,12 +18,14 @@ namespace Model
         private Dictionary<string, Maze> poolMaze;
         private Dictionary<string, Solution<Position>> solutionCache;
         private Dictionary<string, MultiPlayerGame> poolGameToJoin;
-        private bool partnerReady = false;
+        private Dictionary<string, MultiPlayerGame> allActivePoolGame;
+        // private bool partnerReady = false;
         public Modell()
         {
             poolMaze = new Dictionary<string, Maze>();
             solutionCache = new Dictionary<string, Solution<Position>>();
             poolGameToJoin = new Dictionary<string, MultiPlayerGame>();
+            allActivePoolGame = new Dictionary<string, MultiPlayerGame>();
         }
         public Maze generateMaze(string name, int rows, int cols)
         {
@@ -121,17 +123,19 @@ namespace Model
             {
                 MultiPlayerGame multiGame = poolGameToJoin[name];
                 multiGame.setGuest(guest);
-                return poolGameToJoin[name].getMaze().ToJSON();
+                string stringJoinJson = poolGameToJoin[name].getMaze().ToJSON();
+                allActivePoolGame.Add(name, multiGame);
+                poolGameToJoin.Remove(name);
+                return stringJoinJson;
             }
             // else
-            Console.WriteLine("there is no free player to play");
-            return null;
-
+            Console.WriteLine("server - there is no free player to play");
+            return "client - there is no free player to play";
         }
 
         public MultiPlayerGame playGame(TcpClient client)
         {
-            foreach (KeyValuePair<string, MultiPlayerGame> tuple in poolGameToJoin)
+            foreach (KeyValuePair<string, MultiPlayerGame> tuple in allActivePoolGame)
             {
                 if (tuple.Value.getHost() == client)
                 {
