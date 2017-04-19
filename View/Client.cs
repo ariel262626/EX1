@@ -49,7 +49,7 @@ namespace View
                             break;
                         }
                     }
-                   // reader.ReadLine();
+                    reader.ReadLine();
                 }
             }
             client.Close();
