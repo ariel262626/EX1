@@ -12,6 +12,7 @@ namespace View
         {
             Client client = new Client();
             client.startGame();
+            Console.ReadKey();
         }
     }
 }
