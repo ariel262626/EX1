@@ -149,5 +149,27 @@ namespace Model
             Console.WriteLine("MultiPlayerGame not found 404");
             return null;
         }
+
+        public MultiPlayerGame closeGame(TcpClient client, string nameToClose)
+        {
+            MultiPlayerGame multiGameToDelete;
+            foreach (KeyValuePair<string, MultiPlayerGame> tuple in allActivePoolGame)
+            {
+                if (tuple.Value.getHost() == client)
+                {
+                    multiGameToDelete = tuple.Value;
+                    allActivePoolGame.Remove(tuple.Key);
+                    return multiGameToDelete;
+                }
+                if (tuple.Value.getGuest() == client)
+                {
+                    multiGameToDelete = tuple.Value;
+                    allActivePoolGame.Remove(tuple.Key);
+                    return multiGameToDelete;
+                }
+            }
+            Console.WriteLine("MultiPlayerGame not found 404");
+            return null;
+        }
     }
 }

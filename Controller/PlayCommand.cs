@@ -22,11 +22,11 @@ namespace Controller
             string move = args[0];
             MultiPlayerGame multiPlayerGame = model.playGame(client);
             NetworkStream stream = multiPlayerGame.getOtherClient(client).GetStream();
-            StreamReader reader = new StreamReader(stream);
+         //   StreamReader reader = new StreamReader(stream);
             StreamWriter writer = new StreamWriter(stream);
             writer.WriteLine(ToJson(multiPlayerGame, move));
             writer.Flush();
-            return null; // to check!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+            return null;
         }
 
         public string ToJson(MultiPlayerGame multiPlayerGame, string direction)

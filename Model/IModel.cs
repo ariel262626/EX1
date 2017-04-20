@@ -17,6 +17,7 @@ namespace Model
         List<string> listGame();
         string joinToGame(TcpClient client, string name);
         MultiPlayerGame playGame(TcpClient client);
+        MultiPlayerGame closeGame(TcpClient tc, string nameToClose);
 
     }
 }
