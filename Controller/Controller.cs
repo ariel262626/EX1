@@ -23,8 +23,7 @@ namespace Controller
             commands.Add("list", new ListCommand(model));
             commands.Add("join", new JoinCommand(model));
             commands.Add("play", new PlayCommand(model));
-           // commands.Add("close", new CloseCommand(model));
-            // more commands...
+            commands.Add("close", new CloseCommand(model));
         }
         public string ExecuteCommand(string commandLine, TcpClient client)
         {
@@ -37,5 +36,4 @@ namespace Controller
             return command.Execute(args, client);
         }
     }
-
 }
