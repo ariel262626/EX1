@@ -10,13 +10,23 @@ using View;
 
 namespace ObjectAdapter
 {
+    /// <summary>
+    /// class for main
+    /// </summary>
     class Program
     {
+        /// <summary>
+        /// main method of objectadapter
+        /// </summary>
+        /// <param name="args"></param>
         static void Main(string[] args)
         {
             Program program = new Program();
             program.compareSolvers();
         }
+        /// <summary>
+        /// compare the slovers.
+        /// </summary>
         public void compareSolvers()
         {/*
             DFSMazeGenerator mazeCreator = new DFSMazeGenerator();

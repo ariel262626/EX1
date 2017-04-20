@@ -10,16 +10,32 @@ using System.Threading.Tasks;
 
 namespace Controller
 {
+    /// <summary>
+    /// class of close action implement Icommand
+    /// </summary>
     public class CloseCommand : ICommand
     {
+        /// <summary>
+        /// my model
+        /// </summary>
         private IModel model;
+        /// <summary>
+        /// constructor
+        /// </summary>
+        /// <param name="model">my model</param>
         public CloseCommand(IModel model)
         {
             this.model = model;
         }
-
+        /// <summary>
+        /// implement execute
+        /// </summary>
+        /// <param name="args">args of command</param>
+        /// <param name="client">client</param>
+        /// <returns></returns>
         public string Execute(string[] args, TcpClient client)
         {
+            //send message for the two clients to close
             string name = args[0];
             MultiPlayerGame gameToClose = model.closeGame(client, name);
             NetworkStream stream = gameToClose.getOtherClient(client).GetStream();
@@ -35,7 +51,11 @@ namespace Controller
             writer.Flush();
             return null;
         }
-
+        /// <summary>
+        /// to json
+        /// </summary>
+        /// <param name="name">name</param>
+        /// <returns>string</returns>
         public string ToJson(string name)
         {
             dynamic playJson = new JObject();

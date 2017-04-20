@@ -6,8 +6,17 @@ using System.Threading.Tasks;
 
 namespace SearchAlgorithmsLib
 {
+    /// <summary>
+    /// bfs implement searcher
+    /// </summary>
+    /// <typeparam name="T">T type</typeparam>
     public class Bfs<T> : Searcher<T>
     {
+        /// <summary>
+        /// search for solution
+        /// </summary>
+        /// <param name="searchable"> T type</param>
+        /// <returns>solution</returns>
             public override Solution<T> search(ISearchable<T> searchable)
             {
                 addToOpenList(searchable.getInitialState()); // inherited from Searcher
