@@ -29,16 +29,12 @@ namespace Model
             {
                 Thread.Sleep(100);
             }
-          /*  
-
-            NetworkStream stream = guest.GetStream();
-            StreamReader reader = new StreamReader(stream);
-            StreamWriter writer = new StreamWriter(stream);*/
         }
 
         public void setGuest(TcpClient joinClient)
         {
             guest = joinClient;
+            partnerReady = true;
         }
 
         public void setPartnerIsReady()
@@ -57,6 +53,12 @@ namespace Model
         public TcpClient getGuest()
         {
             return guest;
+        }
+        public TcpClient getOtherClient(TcpClient client)
+        {
+            if (host == client)
+                return guest;
+            return host;
         }
     }
 }

@@ -10,6 +10,7 @@ namespace AnotherClient
     {
         static void Main(string[] args)
         {
+            Console.ReadKey();
         }
     }
 }
