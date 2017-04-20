@@ -124,8 +124,9 @@ namespace View
                         Console.WriteLine("hh");
                     });
                     sendingTask.Start();
-                    sendingTask.Wait();
+                  
                     listenTask.Start();
+                    sendingTask.Wait();
                     listenTask.Wait();
                 } else
                 {
