@@ -1,0 +1,114 @@
+commit ed4ad0989fc9d416508d5318c4b7ebf9fb9a8daa
+Author: דביר אלמסי <dviralmasi@gmail.com>
+Date:   Thu Apr 20 19:37:28 2017 +0300
+
+    !!!!!!!!almost finish
+
+commit 8ad900ebf7bbeb37868da446fe8b61a44ac2d0ea
+Author: דביר אלמסי <dviralmasi@gmail.com>
+Date:   Thu Apr 20 19:26:22 2017 +0300
+
+    almost finish
+
+commit b8585711a5702fa57168a4be15931fa4247f5393
+Author: דביר אלמסי <dviralmasi@gmail.com>
+Date:   Wed Apr 19 20:29:53 2017 +0300
+
+    we need to add close
+
+commit 6406a3791ebc0d3d73e0c68fb1b297bb22164590
+Author: דביר אלמסי <dviralmasi@gmail.com>
+Date:   Wed Apr 19 12:26:05 2017 +0300
+
+    before changes in client
+
+commit 10e1f8a3503ba976a60411e9f75331178b46d2fc
+Author: דביר אלמסי <dviralmasi@gmail.com>
+Date:   Tue Apr 18 20:58:37 2017 +0300
+
+    action 2 ready. need to run multiple clients
+
+commit e0c1efaab5d4fb7b60015d5e9a52d6eb29265bcb
+Author: דביר אלמסי <dviralmasi@gmail.com>
+Date:   Tue Apr 18 17:42:13 2017 +0300
+
+    mission check: 1-2
+    mission not ckecked - 3-6
+
+commit fd5a59e9db9b0e5a8be63bad12e263504efc2956
+Author: דביר אלמסי <dviralmasi@gmail.com>
+Date:   Tue Apr 18 11:48:32 2017 +0300
+
+    mission start
+
+commit 821767152983958dbff8eb664d13beb31ef7e954
+Author: דביר אלמסי <dviralmasi@gmail.com>
+Date:   Thu Apr 6 19:19:07 2017 +0300
+
+    start implemention of mvc
+
+commit 24d51df338670841e6dea7a709f218e60bdc3818
+Author: דביר אלמסי <dviralmasi@gmail.com>
+Date:   Wed Apr 5 19:50:59 2017 +0300
+
+    step 1 pinish
+
+commit 5c495215ce6190e25614d3eb673ab7749a280fb0
+Author: דביר אלמסי <dviralmasi@gmail.com>
+Date:   Wed Apr 5 15:51:31 2017 +0300
+
+    bfs and dfs ready
+
+commit a17dee395cfe46219017dc51712e337a7a72a2f0
+Author: דביר אלמסי <dviralmasi@gmail.com>
+Date:   Wed Apr 5 11:56:41 2017 +0300
+
+    test is working in small
+
+commit 7a92ac08662f3b727aa574cc822bef11c25a081b
+Author: דביר אלמסי <dviralmasi@gmail.com>
+Date:   Wed Apr 5 10:01:33 2017 +0300
+
+    test1 with main
+
+commit 7b22b7845010429f8569c7877aa6af2534789b1d
+Author: דביר אלמסי <dviralmasi@gmail.com>
+Date:   Wed Apr 5 08:52:24 2017 +0300
+
+    done bfs, need start dfs
+
+commit 45622f594985dfaecfbfbce73821f393e8bfa30b
+Author: דביר אלמסי <dviralmasi@gmail.com>
+Date:   Tue Apr 4 15:28:35 2017 +0300
+
+    bfs almost finish
+
+commit c90fde1d4837e431dbcd3fe3daa1c9c5f040a587
+Author: דביר אלמסי <dviralmasi@gmail.com>
+Date:   Tue Apr 4 12:41:46 2017 +0300
+
+    start implemation of the bfs and dfs
+
+commit bc35573fd67d1f89a2dd477d65eecb3b29aa4acc
+Author: דביר אלמסי <dviralmasi@gmail.com>
+Date:   Mon Apr 3 11:37:45 2017 +0300
+
+    תחילת עבודהה על bfs
+
+commit 11c3805803a9cf9cd75737bd1687ed72ba22b449
+Author: ariel262626 <ariel262626@walla.co.il>
+Date:   Mon Apr 3 09:50:23 2017 +0300
+
+    tttt
+
+commit 6d1ce2561abac5be14e821978d22b332da7a15e0
+Author: ariel262626 <ariel262626@walla.co.il>
+Date:   Mon Apr 3 09:49:05 2017 +0300
+
+    test
+
+commit 39046bc657547a69a853100c15050a80b5a8731d
+Author: ariel262626 <ariel262626@walla.co.il>
+Date:   Mon Apr 3 09:47:18 2017 +0300
+
+    Initial commit to add default .gitIgnore and .gitAttribute files.
