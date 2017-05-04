@@ -8,16 +8,36 @@ using System.Threading.Tasks;
 
 namespace Controller
 {
+    /// <summary>
+    /// class of server
+    /// </summary>
     class Server
     {
+            /// <summary>
+            /// port
+            /// </summary>
             private int port;
+        /// <summary>
+        /// listener
+        /// </summary>
             private TcpListener listener;
+        /// <summary>
+        /// clientHandler
+        /// </summary>
             private IClientHandler ch;
+        /// <summary>
+        /// constructor
+        /// </summary>
+        /// <param name="port">my port</param>
+        /// <param name="ch">my client handler</param>
             public Server(int port, IClientHandler ch)
             {
                 this.port = port;
                 this.ch = ch;
             }
+        /// <summary>
+        /// start the connection
+        /// </summary>
             public void Start()
             {
                 IPEndPoint ep = new
@@ -26,7 +46,7 @@ namespace Controller
 
                 listener.Start();
                 Console.WriteLine("Waiting for connections...");
-
+            //new task get client and send hom to handle
                 Task task = new Task(() => {
                 while (true)
                 {
@@ -45,6 +65,9 @@ namespace Controller
             });
             task.Start();
         }
+        /// <summary>
+        /// stop to listen
+        /// </summary>
         public void Stop()
         {
             listener.Stop();

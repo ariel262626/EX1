@@ -11,16 +11,30 @@ using System.Threading.Tasks;
 
 namespace Controller
 {
+    /// <summary>
+    /// class solve implementt Icommand
+    /// </summary>
     public class SolveCommand: ICommand
     {
+        /// <summary>
+        /// model
+        /// </summary>
         private IModel model;
-        //private Searcher<Position> searcher;
+        /// <summary>
+        /// constructor
+        /// </summary>
+        /// <param name="model">model</param>
         public SolveCommand (IModel model)
         {
             this.model = model;
         }
 
-
+        /// <summary>
+        /// to json
+        /// </summary>
+        /// <param name="name">name</param>
+        /// <param name="sol">solution</param>
+        /// <returns>string</returns>
         public string ToJson(string name, Solution<Position> sol)
         {
             dynamic solveJson = new JObject();
@@ -29,7 +43,11 @@ namespace Controller
             solveJson.NodesEvaluated = sol.getNumberOfNodesEvaluated().ToString();
             return solveJson.ToString();
         }
-
+        /// <summary>
+        /// calculateSteps
+        /// </summary>
+        /// <param name="sol">solution</param>
+        /// <returnsstring></returns>
         public string calculateSteps(Solution<Position> sol)
         {
             // string object for adding string each time
@@ -63,7 +81,12 @@ namespace Controller
             }
             return sb.ToString();
         }
-
+        /// <summary>
+        /// implement execute
+        /// </summary>
+        /// <param name="args">args of command</param>
+        /// <param name="client">client</param>
+        /// <returns></returns>
         public string Execute(string[] args, TcpClient client)
         {
             string name = args[0];

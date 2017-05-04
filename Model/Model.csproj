@@ -72,7 +72,7 @@
       <Project>{bf2311e7-54ff-490c-a888-222192a46c48}</Project>
       <Name>SearchAlgorithmsLib</Name>
     </ProjectReference>
-    <ProjectReference Include="..\View\View.csproj">
+    <ProjectReference Include="..\View\ClientSide.csproj">
       <Project>{0264c031-ea05-42ab-bd2d-39c7c0ffa747}</Project>
       <Name>View</Name>
     </ProjectReference>

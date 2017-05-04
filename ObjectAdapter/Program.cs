@@ -10,15 +10,25 @@ using View;
 
 namespace ObjectAdapter
 {
+    /// <summary>
+    /// class for main
+    /// </summary>
     class Program
     {
+        /// <summary>
+        /// main method of objectadapter
+        /// </summary>
+        /// <param name="args"></param>
         static void Main(string[] args)
         {
             Program program = new Program();
             program.compareSolvers();
         }
+        /// <summary>
+        /// compare the slovers.
+        /// </summary>
         public void compareSolvers()
-        {/*
+        {
             DFSMazeGenerator mazeCreator = new DFSMazeGenerator();
             Maze maze = mazeCreator.Generate(25, 25);
             MazeSearcher mazeSearchable = new MazeSearcher(maze);
@@ -52,7 +62,6 @@ namespace ObjectAdapter
                 Console.Write("({0},{1}) ", x, y);
             }
             Console.ReadKey();
-        */
             
         }
     }

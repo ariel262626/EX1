@@ -4,13 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Controller
+namespace SearchAlgorithmsLib
 {
-    class Program
+    class MazeSerchable
     {
-        static void Main(string[] args)
-        {
-
-        }
     }
 }

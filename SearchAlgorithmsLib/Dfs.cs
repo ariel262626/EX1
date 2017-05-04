@@ -6,8 +6,17 @@ using System.Threading.Tasks;
 
 namespace SearchAlgorithmsLib
 {
+    /// <summary>
+    /// dfs class implement searcher
+    /// </summary>
+    /// <typeparam name="T"> T type</typeparam>
     public class Dfs <T>: Searcher<T>
     {
+        /// <summary>
+        /// search the solution
+        /// </summary>
+        /// <param name="searchable"> searchable object</param>
+        /// <returns>solution</returns>
         public override Solution<T> search(ISearchable<T> searchable)
         {
             Stack<State<T>> stack = new Stack<State<T>>();
@@ -15,10 +24,10 @@ namespace SearchAlgorithmsLib
             stack.Push(searchable.getInitialState());
             while (stack.Count != 0)
             {
-
+                //get from the stack
                 State<T> state = stack.Pop();
                 increaseEvaluatedNodes();
-
+                //if goal state 
                 if (state.Equals(searchable.getGoalState()))
                     return backTrace(state);
                 if (!visitedStates.Contains(state))
