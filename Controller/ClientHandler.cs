@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 namespace Controller
 {
     /// <summary>
-    /// class cllientHandler implement icleintHandler
+    /// class cllientHandler implement icleintHandler.
     /// </summary>
     public class ClientHandler: IClientHandler
     {
