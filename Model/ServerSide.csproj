@@ -44,6 +44,7 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -53,15 +54,29 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="IModel.cs" />
-    <Compile Include="Modell.cs" />
-    <Compile Include="MultiPlayerGame.cs" />
-    <Compile Include="Program.cs" />
+    <Compile Include="Controller\CloseCommand.cs" />
+    <Compile Include="Controller\Controller.cs" />
+    <Compile Include="Controller\GenerateMazeCommand.cs" />
+    <Compile Include="Controller\ICommand.cs" />
+    <Compile Include="Controller\JoinCommand.cs" />
+    <Compile Include="Controller\ListCommand.cs" />
+    <Compile Include="Controller\PlayCommand.cs" />
+    <Compile Include="View\Program.cs" />
+    <Compile Include="Controller\Server.cs" />
+    <Compile Include="Controller\SolveCommand.cs" />
+    <Compile Include="Controller\StartCommand.cs" />
+    <Compile Include="Modell\IModel.cs" />
+    <Compile Include="Modell\Modell.cs" />
+    <Compile Include="Modell\MultiPlayerGame.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="View\ClientHandler.cs" />
+    <Compile Include="View\IClientHandler.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config" />
-    <None Include="packages.config" />
+    <None Include="Controller\App.config" />
+    <None Include="Controller\packages.config" />
+    <None Include="Modell\App.config" />
+    <None Include="Modell\packages.config" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\ObjectAdapter\ObjectAdapter.csproj">
@@ -74,9 +89,10 @@
     </ProjectReference>
     <ProjectReference Include="..\View\ClientSide.csproj">
       <Project>{0264c031-ea05-42ab-bd2d-39c7c0ffa747}</Project>
-      <Name>View</Name>
+      <Name>ClientSide</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

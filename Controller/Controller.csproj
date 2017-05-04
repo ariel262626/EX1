@@ -74,9 +74,9 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Model\Model.csproj">
+    <ProjectReference Include="..\Model\ServerSide.csproj">
       <Project>{8b327c10-3faa-42e1-8592-e85b68e97c8b}</Project>
-      <Name>Model</Name>
+      <Name>ServerSide</Name>
     </ProjectReference>
     <ProjectReference Include="..\ObjectAdapter\ObjectAdapter.csproj">
       <Project>{8cccfa34-092c-409c-ae90-f7511ca3849c}</Project>
