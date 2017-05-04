@@ -6,27 +6,12 @@ using System.Threading.Tasks;
 using MazeLib;
 namespace SearchAlgorithmsLib
 {
-    /// <summary>
-    /// Adapter class for the Maze  implement isearchable
-    /// </summary>
+    /* Adapter class for the Maze */
     public class MazeSearcher : ISearchable<Position>
     {
-        /// <summary>
-        /// mymaxe
-        /// </summary>
         private Maze myMaze;
-        /// <summary>
-        /// start and goal
-        /// </summary>
         private State<Position> myStart, myGoal;
-        /// <summary>
-        /// pool state
-        /// </summary>
         HashSet<State<Position>> poolState;
-        /// <summary>
-        /// constructor
-        /// </summary>
-        /// <param name="maze"> maze to initialize</param>
         public MazeSearcher(Maze maze)
         {
             myMaze = maze;
@@ -36,30 +21,21 @@ namespace SearchAlgorithmsLib
             myGoal = new State<Position>(myMaze.GoalPos);
             poolState = new HashSet<State<Position>>();
         }
-        /// <summary>
-        /// get start
-        /// </summary>
-        /// <returns>start point</returns>
+
         public State<Position> getInitialState()
         {
             return myStart;
         }
-        /// <summary>
-        /// get end point
-        /// </summary>
-        /// <returns>end</returns>
+
         public State<Position> getGoalState()
         {
             return myGoal;
         }
-        /// <summary>
-        /// check his all relevant niegbours
-        /// </summary>
-        /// <param name="s">check s neighbors</param>
-        /// <returns> the list of them</returns>
+
         public List<State<Position>> getAllPossibleStates(State<Position> s)
         {
             List<State<MazeLib.Position>> myNeigbours = new List<State<MazeLib.Position>>();
+            // check his all relevant niegbours
             // up
             if ((s.getState().Row - 1 >= 0) && (myMaze[s.getState().Row - 1, s.getState().Col] == 0))
             {

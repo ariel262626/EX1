@@ -8,26 +8,14 @@ using System.Threading.Tasks;
 
 namespace Controller
 {
-    /// <summary>
-    /// class of the controller
-    /// </summary>
     class Controller
     {
-        /// <summary>
-        /// dictionary of command
-        /// </summary>
         private Dictionary<string, ICommand> commands;
-        /// <summary>
-        /// model
-        /// </summary>
         private IModel model;
-        /// <summary>
-        /// constructor
-        /// </summary>
         public Controller()
         {
             this.model = new Modell();
-            //add the commands to the dictionary
+
             commands = new Dictionary<string, ICommand>();
             commands.Add("generate", new GenerateMazeCommand(model));
             commands.Add("solve", new SolveCommand(model));
@@ -37,12 +25,6 @@ namespace Controller
             commands.Add("play", new PlayCommand(model));
             commands.Add("close", new CloseCommand(model));
         }
-        /// <summary>
-        /// implement execute
-        /// </summary>
-        /// <param name="commandLine">string of command</param>
-        /// <param name="client">client</param>
-        /// <returns></returns>
         public string ExecuteCommand(string commandLine, TcpClient client)
         {
             string[] arr = commandLine.Split(' ');

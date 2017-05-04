@@ -10,25 +10,11 @@ using System.Threading.Tasks;
 
 namespace View
 {
-    /// <summary>
-    /// the client class 
-    /// </summary>
     public class Client
     {
-        /// <summary>
-        ///  if we in multiplayer make it true
-        /// </summary>
         private bool isMultiPlayer = false;
         private bool isStop = false;
-
-        /// <summary>
-        /// constructor of client
-        /// </summary>
         public Client() { }
-
-        /// <summary>
-        /// start game method acting the single and the multi game
-        /// </summary>
         public void startGame()
         {
             IPEndPoint ep = new IPEndPoint(IPAddress.Parse("127.0.0.1"), 5555);
@@ -37,26 +23,22 @@ namespace View
             NetworkStream stream = null;
             StreamWriter writer = null;
             StreamReader reader = null;
-            //the main while loop keep ask for the next mission
             while (true)
             {
-                //first usr give his choice
                 Console.Write("Please enter a mission:");
-                //read from user
                 string mission = Console.ReadLine();
-                //if client is off
                 if (!client.Connected)
                 {
+                    Console.WriteLine("Im not connect yet");
                     try
                     {
-                        //open and connect
                         client = new TcpClient();
                         client.Connect(ep);
                         Console.WriteLine("now im connect");
                     }
                     catch (SocketException e)
                     {
-                        Console.WriteLine("Error in socket at client");
+                        Console.WriteLine("Error in socket");
                     }
                     Console.WriteLine("You are connected");
                      stream = client.GetStream();
@@ -64,17 +46,16 @@ namespace View
                      writer = new StreamWriter(stream);
                 }
                 // Send data to server
-                //split the input and check
+              
                 string[] arr = mission.Split(' ');
                 if (arr[0].Equals("start") || arr[0].Equals("join"))
                 {
-                    // to know if we need multiplayer platform
+                    // to know if we need new thread
                     isMultiPlayer = true;
                 }
-                //send the mission to handle
+
                 writer.WriteLine(mission);
                 writer.Flush();
-                //while for reading all the result
                 while (true)
                 {
                     string result = reader.ReadLine();
@@ -85,14 +66,11 @@ namespace View
                         break;
                     }
                 }
-                //clean
                 reader.DiscardBufferedData();
-                //if we need multiplayer mode open 2 tasks one to read and one more to write at same time
                 if (isMultiPlayer)
                 {
                     Task sendingTask = new Task(() =>
                     {
-                        //to keep the task open
                         while (true)
                         {
                         // Send data to server
@@ -122,6 +100,7 @@ namespace View
                                     Console.WriteLine("close the listener");
                                     isStop = true;
                                     client.Close();
+                                    //startGame();
                                 }
                                 if (isStop)
                                 {
@@ -140,17 +119,17 @@ namespace View
                                 break;
                             }
                             reader.DiscardBufferedData();
+                            Console.WriteLine("ere");
                         }
                         Console.WriteLine("hh");
                     });
-                    //start the tasks and wait for them
                     sendingTask.Start();
+                  
                     listenTask.Start();
                     sendingTask.Wait();
                     listenTask.Wait();
                 } else
                 {
-                    //if single player close connection
                     client.Close();
                     stream.Dispose();
                     writer.Dispose();
