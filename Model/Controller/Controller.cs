@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 namespace Controller
 {
     /// <summary>
-    /// class of the controller
+    /// class of the controller.
     /// </summary>
     class Controller
     {
